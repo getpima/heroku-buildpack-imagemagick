@@ -58,6 +58,23 @@ else
   tar xzf $CACHE_FILE -C $VENDOR_DIR
 fi
 
+echo "-----> Downloading ImageMagick from https://poppler.freedesktop.org/poppler-21.05.0.tar.xz"
+wget https://poppler.freedesktop.org/poppler-21.05.0.tar.xz
+tar -xf poppler-21.05.0.tar.xz
+cd poppler-21.05.0
+./configure
+make && make install
+ls
+ls bin
+cd ..
+# sudo ln -s /usr/local/bin/pdftotext /usr/bin/pdftotext
+# sudo ln -s /usr/local/bin/pdftoppm /usr/bin/pdftoppm
+# sudo ln -s /usr/local/lib/libpoppler.so.64 /usr/lib/libpoppler.so.64
+# sudo ln -s /usr/local/lib/libpoppler.so.58 /usr/lib/libpoppler.so.58
+
+echo -n '.'
+
+
 echo "-----> Writing policy file"
 mkdir -p $INSTALL_DIR/etc/ImageMagick
 cat > $INSTALL_DIR/policy.xml <<EOF
