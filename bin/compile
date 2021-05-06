@@ -58,15 +58,16 @@ else
   tar xzf $CACHE_FILE -C $VENDOR_DIR
 fi
 
-echo "-----> Downloading ImageMagick from https://poppler.freedesktop.org/poppler-21.05.0.tar.xz"
+echo "-----> Downloading POPPLER from https://poppler.freedesktop.org/poppler-21.05.0.tar.xz"
 wget https://poppler.freedesktop.org/poppler-21.05.0.tar.xz
 tar -xf poppler-21.05.0.tar.xz
 cd poppler-21.05.0
-./configure
-make && make install
-ls
-ls bin
-cd ..
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=release
+make
+make install
+cd ../..
 # sudo ln -s /usr/local/bin/pdftotext /usr/bin/pdftotext
 # sudo ln -s /usr/local/bin/pdftoppm /usr/bin/pdftoppm
 # sudo ln -s /usr/local/lib/libpoppler.so.64 /usr/lib/libpoppler.so.64
