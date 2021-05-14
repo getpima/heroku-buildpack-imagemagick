@@ -86,18 +86,3 @@ echo "export PATH=$ACTUAL_INSTALL_PATH/bin:\$PATH" >> $PROFILE_PATH
 echo "export LD_LIBRARY_PATH=$ACTUAL_INSTALL_PATH/lib:\$LD_LIBRARY_PATH:/usr/local/lib" >> $PROFILE_PATH
 echo "export MAGICK_CONFIGURE_PATH=$ACTUAL_INSTALL_PATH" >> $PROFILE_PATH
 echo "-----> Done updating environment variables. All set for ImageMagick."
-
-
-
-echo "-----> Making poppler folder"
-mkdir poppler-data
-cd poppler-data
-echo "-----> Download poppler data"
-wget https://poppler.freedesktop.org/poppler-data-0.4.10.tar.gz
-echo "-----> Untar poppler data"
-tar xvf poppler-data-0.4.10.tar.gz
-cd poppler-data-0.4.10
-tar "-----> Install poppler data"
-make install
-cd ../..
-ls /usr/share/poppler
